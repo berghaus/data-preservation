@@ -1,0 +1,63 @@
+{#
+ # The base template usually extends the main Invenio template, or perhaps
+ # a module-specific main template. It contains nearly all the HTML code.
+ #}
+{% extends "page.html" %}
+
+
+{#
+ # Macros
+ #  * Make template blocks more clear so you don't clutter up a lot of HTML with
+ #    rendering logic - e.g. you wouldn't put your Python code in one big
+ #    function, instead you split it up into small functions with clearly
+ #    defined responsibilities.
+ #  * Macros can be parameterized.
+ #}
+{%- macro action_bar(show_delete=True) %}
+    {# Macros can be overwritten in a child template, but only calls within the
+     # child template will call the new macro. Hence, if you just want to
+     # overwrite the action_bar macro in <module>/<name>.html, you must also
+     # copy/paste the form_header and form_footer blocks where it's used,
+     # otherwise the old macro will be used. To avoid this problem, please
+     # just include a template inside the macro instead. This will allows another
+     # Invenio installation to overwrite just this part.
+     #}
+    {% include "hello_action_bar.html"%}
+{ endmarco %}
+
+{%- macro render_field(thisfield, with_label=True) %}
+    {% include "hello_render_field.html"%}
+{%- endmarco %}
+
+{#
+ # Blocks
+ #  * Think of template-blocks as the API which other Invenio installations will
+ #    use to customize the Invenio layout. An Invenio installation can override
+ #    blocks defined in your templates so that they keep their own changes
+ #    to a minimum, and don't copy/paste large parts of the template code.
+ #  * Use blocks liberally - to allow customizations of your template.
+ #  * Add the template block name to the {% endblock <name> %} to increase
+ #    readability of template code.
+ #}
+{% block body %}
+<div>
+    {%- block form_header scoped %}{{action_bar()}}{% endblock form_header%}
+    {%- block form_title scoped %}<h1>{{ form._title }}</h1>{% endblock form_title %}
+    {%- block form_body scoped %}
+        <fieldset>
+        {%- for field in fields %}
+            {#
+             # Use the "scoped" parameter, to make variables available inside
+             # the block. E.g. without the loop variable will not be available
+             # inside the block.
+             #}
+            {%- block field_body scoped %}
+                {{ render_field(field) }}
+                {% if loop.last %}<hr />{% endif %}
+            {%- endblock field_body %}
+        {%- endfor %}
+        </fieldset>
+    {% endblock form_body %}
+    {% block form_footer scoped %}{{action_bar(show_delete=False)}}{% endblock form_footer %}
+</div>
+{% endblock body %}

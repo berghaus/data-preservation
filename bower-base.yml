@@ -1,0 +1,6 @@
+{
+  "name": "invenio_dphep",
+  "resolutions": {
+    "bootstrap": "3.2"
+  }
+}

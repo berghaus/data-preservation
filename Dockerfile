@@ -16,7 +16,7 @@
 # 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 
 # based on the right Invenio base image
-FROM berghaus/invenio:2.1
+FROM invenio:2.1
 
 # get root rights again
 USER root

@@ -1,0 +1,27 @@
+#menu
+{
+	width: 60%;
+	height: 7%;
+	font-size: 25px;
+	font-family: sans-serif;
+	color: #ffffff;
+	font-weight: bold;
+	text-align: left;
+	text-shadow:4px 3px 4px #000000;
+	background-image: url("data_processing_banner1.jpg");
+	background-repeat: no-repeat;
+	border-radius: 8px;	
+	position: absolute;
+	bottom: 2%;
+}
+#menu ul
+{
+	height: auto;
+	padding: 1% 0%;
+	margin: 0px;
+}
+#menu li
+{
+	display: inline;
+	padding: 5%;
+}

@@ -1,0 +1,30 @@
+#photo
+{
+	position: absolute;
+	right: 5%;
+	top: 5%;
+	width: 45%;
+}
+#map
+{
+	position: absolute;
+	right: 5%;
+	top: 78%;
+	bottom: 5%;
+	width: 45%;
+}
+p
+{
+	margin: 5% 50% 5% 5%;
+	width: 40%;
+	font-size: 33px;
+	text-align: justify;
+}
+h1
+{
+	margin: 5% 55% 0% 5%;
+	font-size: 50px;
+	font-family: cursive;
+	color: green;
+	text-align: center;
+}

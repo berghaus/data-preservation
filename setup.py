@@ -14,6 +14,6 @@ setup(
         "Invenio>=2"
     ],
     entry_points={
-        "invenio.config": [ "dphep=invenio_dphep.config" ]
+        "invenio.config": [ "dphep=dphep.config" ]
     }
 )

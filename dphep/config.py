@@ -6,12 +6,12 @@ CFG_SITE_NAME_INTL = {
 }
 
 PACKAGES = [
-    "invenio_dphep.base",
+    "dphep.base",
     "invenio.modules.*",
     "invenio.base",
 ]
 
 try:
-    from invenio_dphep.instance_config import *
+    from dphep.instance_config import *
 except ImportError:
     pass

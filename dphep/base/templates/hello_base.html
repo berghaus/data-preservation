@@ -23,11 +23,11 @@
      # Invenio installation to overwrite just this part.
      #}
     {% include "hello_action_bar.html"%}
-{ endmarco %}
+{%- endmacro %}
 
 {%- macro render_field(thisfield, with_label=True) %}
     {% include "hello_render_field.html"%}
-{%- endmarco %}
+{%- endmacro %}
 
 {#
  # Blocks
@@ -41,23 +41,6 @@
  #}
 {% block body %}
 <div>
-    {%- block form_header scoped %}{{action_bar()}}{% endblock form_header%}
-    {%- block form_title scoped %}<h1>{{ form._title }}</h1>{% endblock form_title %}
-    {%- block form_body scoped %}
-        <fieldset>
-        {%- for field in fields %}
-            {#
-             # Use the "scoped" parameter, to make variables available inside
-             # the block. E.g. without the loop variable will not be available
-             # inside the block.
-             #}
-            {%- block field_body scoped %}
-                {{ render_field(field) }}
-                {% if loop.last %}<hr />{% endif %}
-            {%- endblock field_body %}
-        {%- endfor %}
-        </fieldset>
-    {% endblock form_body %}
-    {% block form_footer scoped %}{{action_bar(show_delete=False)}}{% endblock form_footer %}
+  <p>Hello {{name}}</p>
 </div>
 {% endblock body %}

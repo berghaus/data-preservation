@@ -30,14 +30,16 @@ RUN sed -i '/inveniosoftware\/invenio[@#]/d' requirements.txt && \
     pip install -r requirements.txt --exists-action i
 
 # build
-#RUN python setup.py compile_catalog
+RUN python setup.py extract_messages
+RUN python setup.py init_catalog -l fr
+RUN python setup.py compile_catalog
 
 # step back
 # in general code should not be writeable, especially because we are using
 # `pip install -e`
 RUN mkdir -p /code-overlay/src && \
     chown -R invenio:invenio /code-overlay && \
-    chown -R root:root /code-overlay/invenio_dphep && \
+    chown -R root:root /code-overlay/dphep && \
     chown -R root:root /code-overlay/setup.* && \
     chown -R root:root /code-overlay/src
 

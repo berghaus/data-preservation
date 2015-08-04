@@ -32,7 +32,7 @@ web:
     - ../invenio/invenio:/code/invenio:ro
     - ../invenio/docs:/code/docs:rw
     - ../invenio/scripts:/code/scripts:ro
-    - ./invenio_dphep:/code-overlay/invenio_dphep:ro
+    - ./dphep:/code-overlay/dphep:ro
     - /code/invenio/base/translations
   links:
     - mysql:db
